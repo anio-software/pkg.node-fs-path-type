@@ -1,4 +1,4 @@
-import createFSObject from "@anio-js-foundation/node-fs-api"
+import createFSObject from "@anio-node-foundation/fs-api"
 
 import sync_impl from "./auto/sync.mjs"
 import async_impl from "./auto/async.mjs"

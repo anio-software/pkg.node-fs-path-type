@@ -2,9 +2,7 @@ import path from "node:path"
 
 async function tryStat(fs_object, path, fn = "lstat") {
 	try {
-		const stat = await fs_object[fn](path)
-
-		return stat
+		return await fs_object[fn](path)
 	} catch (error) {
 		//
 		// ENOENT means no such entry
