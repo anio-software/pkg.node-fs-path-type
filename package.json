@@ -1,5 +1,5 @@
 {
-  "name": "@anio-node-foundation/fs-get-path-type",
+  "name": "@anio-fs/path-type",
   "version": "2.0.0",
   "description": "Determine the type of a path.",
   "main": "./dist/package.min.mjs",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anio-node-foundation/fs-get-path-type.git"
+    "url": "git+https://github.com/anio-fs-org/path-type.git"
   },
   "devDependencies": {
     "@anio-fs/api": "^4.0.0",
