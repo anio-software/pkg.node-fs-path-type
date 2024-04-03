@@ -6,12 +6,10 @@ import async_impl from "./auto/async.mjs"
 const async_fs = createFSObject({sync: false})
 const sync_fs = createFSObject({sync: true})
 
-function nodeFsGetPathType(...args) {
-	return async_impl(async_fs, ...args)
+export function getTypeOfPath(...paths) {
+	return async_impl(async_fs, ...paths)
 }
 
-nodeFsGetPathType.sync = function(...args) {
-	return sync_impl(sync_fs, ...args)
+export function getTypeOfPathSync(...paths) {
+	return sync_impl(sync_fs, ...paths)
 }
-
-export default nodeFsGetPathType
