@@ -1,6 +1,6 @@
 {
   "name": "@anio-fs/path-type",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Determine the type of a path.",
   "main": "./dist/package.min.mjs",
   "typings": "./dist/index.d.ts",
