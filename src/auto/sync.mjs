@@ -1,30 +1,38 @@
+import {stat, lstat} from "@anio-fs/api/sync"
 import path from "node:path"
 
-function tryStat(fs_object, path, fn = "lstat") {
+function tryStat(path) {
 	try {
-		return fs_object[fn](path)
+		return stat(path)
 	} catch (error) {
-		//
-		// ENOENT means no such entry
-		//
-		if (error.code === "ENOENT") {
-			return false
-		}
+		if (error.code === "ENOENT") return false
 
-		// re-throw every other error
 		throw error
 	}
 }
 
-export default function(fs_object, ...args) {
+function tryLinkStat(path) {
+	try {
+		return lstat(path)
+	} catch (error) {
+		if (error.code === "ENOENT") return false
+
+		throw error
+	}
+}
+
+export default function(...args) {
 	const path_to_check = path.join(...args)
 
-	const lstat = tryStat(fs_object, path_to_check)
+	//
+	// try lstat first in case path is a symbolic link
+	//
+	const lstat = tryLinkStat(path_to_check)
 
 	if (lstat === false) return false
 
 	if (lstat.isSymbolicLink()) {
-		const stat = tryStat(fs_object, path_to_check, "stat")
+		const stat = tryStat(path_to_check)
 
 		if (stat === false) return "link->broken"
 		if (stat.isDirectory()) return "link->dir"

@@ -1,10 +1,14 @@
 import {generateFromTemplate} from "vipen/autogenerate"
 
 const asyncToSync = {
-	"async function tryStat": "function tryStat",
-	"return await fs_object[fn](path)": "return fs_object[fn](path)",
-	"export default async function": "export default function",
-	"await tryStat(": "tryStat("
+	"import {stat, lstat} from \"@anio-fs/api/async\"": "import {stat, lstat} from \"@anio-fs/api/sync\"",
+	"async function tryStat(path)": "function tryStat(path)",
+	"return await stat(path)": "return stat(path)",
+	"async function tryLinkStat(path)": "function tryLinkStat(path)",
+	"return await lstat(path)": "return lstat(path)",
+	"await tryLinkStat(path_to_check)": "tryLinkStat(path_to_check)",
+	"await tryStat(path_to_check)": "tryStat(path_to_check)",
+	"export default async function(": "export default function("
 }
 
 export default {
