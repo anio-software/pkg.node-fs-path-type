@@ -1,5 +1,6 @@
 import {stat, lstat} from "@anio-fs/api/async"
 import path from "node:path"
+import {useContext} from "@fourtune/realm-js"
 
 async function tryStat(path) {
 	try {
@@ -21,7 +22,10 @@ async function tryLinkStat(path) {
 	}
 }
 
-async function getTypeOfPathImplementation(...args) {
+/**
+ * @param {import("@fourtune/realm-js").ContextInstanceType} context
+ */
+async function getTypeOfPathImplementation(context, ...args) {
 	const path_to_check = path.join(...args)
 
 	//
@@ -46,9 +50,9 @@ async function getTypeOfPathImplementation(...args) {
 }
 
 export default function(context_or_options = {}) {
+	const context = useContext(context_or_options)
 
 	return async function getTypeOfPath(...paths) {
-		return await getTypeOfPathImplementation(...paths)
+		return await getTypeOfPathImplementation(context, ...paths)
 	}
-
 }
