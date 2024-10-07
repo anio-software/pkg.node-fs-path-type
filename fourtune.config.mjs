@@ -18,7 +18,7 @@ export default {
 	type: "package",
 
 	autogenerate: {
-		"sync.mjs": generateFromTemplate("src/template.mjs", asyncToSync),
-		"async.mjs": generateFromTemplate("src/template.mjs", {})
+		"sync.mjs": generateFromTemplate("template/getTypeOfPathFactory.mjs", asyncToSync),
+		"async.mjs": generateFromTemplate("template/getTypeOfPathFactory.mjs", {})
 	}
 }
