@@ -44,9 +44,9 @@ async function getTypeOfPathImplementation(context, ...args) {
 		return "linkToFile"
 	}
 
-	if (lstat.isDirectory()) return "dir"
+	if (lstat.isDirectory()) return "regularDir"
 
-	return "file"
+	return "regularFile"
 }
 
 export default function(context_or_options = {}) {

@@ -1,7 +1,7 @@
 export enum PathType {
 	nonExisting = "nonExisting",
-	file        = "file",
-	dir         = "dir",
+	regularFile = "regularFile",
+	regularDir  = "regularDir",
 	linkToFile  = "linkToFile",
 	linkToDir   = "linkToDir",
 	brokenLink  = "brokenLink"
