@@ -21,7 +21,7 @@ function tryLinkStat(path) {
 	}
 }
 
-export default function(...args) {
+function getTypeOfPathImplementation(...args) {
 	const path_to_check = path.join(...args)
 
 	//
@@ -43,4 +43,12 @@ export default function(...args) {
 	if (lstat.isDirectory()) return "dir"
 
 	return "file"
+}
+
+export default function(context_or_options = {}) {
+
+	return function getTypeOfPathSync(...paths) {
+		return getTypeOfPathImplementation(...paths)
+	}
+
 }

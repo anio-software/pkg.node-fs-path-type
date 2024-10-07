@@ -21,7 +21,7 @@ async function tryLinkStat(path) {
 	}
 }
 
-export default async function(...args) {
+async function getTypeOfPathImplementation(...args) {
 	const path_to_check = path.join(...args)
 
 	//
@@ -43,4 +43,12 @@ export default async function(...args) {
 	if (lstat.isDirectory()) return "dir"
 
 	return "file"
+}
+
+export default function(context_or_options = {}) {
+
+	return async function getTypeOfPath(...paths) {
+		return await getTypeOfPathImplementation(...paths)
+	}
+
 }

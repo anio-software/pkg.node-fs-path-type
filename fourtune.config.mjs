@@ -8,7 +8,9 @@ const asyncToSync = {
 	"return await lstat(path)": "return lstat(path)",
 	"await tryLinkStat(path_to_check)": "tryLinkStat(path_to_check)",
 	"await tryStat(path_to_check)": "tryStat(path_to_check)",
-	"export default async function(": "export default function("
+	"async function getTypeOfPathImplementation(": "function getTypeOfPathImplementation(",
+	"return async function getTypeOfPath(": "return function getTypeOfPathSync(",
+	"return await getTypeOfPathImplementation(": "return getTypeOfPathImplementation("
 }
 
 export default {
