@@ -18,7 +18,17 @@ export default {
 	type: "package",
 
 	autogenerate: {
-		"sync.mjs": generateFromTemplate("template/getTypeOfPathFactory.mjs", asyncToSync),
-		"async.mjs": generateFromTemplate("template/getTypeOfPathFactory.mjs", {})
+		"export/getTypeOfPathFactory.mjs": generateFromTemplate("template/getTypeOfPathFactory.mjs", {}),
+		"export/getTypeOfPathSyncFactory.mjs": generateFromTemplate("template/getTypeOfPathFactory.mjs", asyncToSync),
+
+		"export/getTypeOfPath.d.mts": generateFromTemplate("template/getTypeOfPath.d.mts", {
+			"$<verb>": "Asynchronously",
+			"$<<ret>>": "Promise<PathType>"
+		}),
+
+		"export/getTypeOfPathSync.d.mts": generateFromTemplate("template/getTypeOfPath.d.mts", {
+			"$<verb>": "Synchronously",
+			"$<<ret>>": "PathType"
+		})
 	}
 }
