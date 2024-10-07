@@ -1,7 +1,10 @@
-import type {PathType} from "../../types.d.mts"
+import PathType from "../../export/PathType.mts"
+import factory from "./getTypeOfPathFactory.mts"
+
+const impl = factory()
 
 /**
- * @brief $<verb> get the type of a path.
+ * @brief Asynchronously get the type of a path.
  * @description
  * Determines the type of supplied path.
  * Note: symbolic links are never resolved.
@@ -20,4 +23,6 @@ import type {PathType} from "../../types.d.mts"
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export default function(...paths : string[]) : $<<ret>>
+export default async function(...paths : string[]) : Promise<PathType> {
+	return await impl(...paths)
+}
