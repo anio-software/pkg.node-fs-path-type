@@ -29,6 +29,14 @@ export default {
 		"export/getTypeOfPathSync.d.mts": generateFromTemplate("template/getTypeOfPath.d.mts", {
 			"$<verb>": "Synchronously",
 			"$<<ret>>": "PathType"
-		})
+		}),
+
+		"export/getTypeOfPathFactory.d.mts": generateFromTemplate("template/getTypeOfPathFactory.d.mts", {
+			"getTypeOfPath$Sync": "getTypeOfPath"
+		}),
+
+		"export/getTypeOfPathSyncFactory.d.mts": generateFromTemplate("template/getTypeOfPathFactory.d.mts", {
+			"getTypeOfPath$Sync": "getTypeOfPathSync"
+		}),
 	}
 }
