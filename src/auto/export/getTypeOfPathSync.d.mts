@@ -8,16 +8,16 @@ import type {PathType} from "../../types.d.mts"
  * @return
  * The type of the path which can be the following values:
  * 
- * `false` - path does not exist
+ * `nonExisting` - path does not exist
  * 
- * `file` - path is a file
+ * `regularFile` - path is a file
  * 
- * `dir` - path is a directory
+ * `regularDir` - path is a directory
  * 
- * `link->file` - path is a symbolic link and points to a file
+ * `linkToFile` - path is a symbolic link and points to a file
  * 
- * `link->dir` - path is a symbolic link and points to a directory
+ * `linkToDir` - path is a symbolic link and points to a directory
  * 
- * `link->broken` - path is a symbolic link and points to a non existing path
+ * `brokenLink` - path is a symbolic link and points to a non existing path
  */
 export default function(...paths : string[]) : PathType
