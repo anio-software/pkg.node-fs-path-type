@@ -33,15 +33,15 @@ function getTypeOfPathImplementation(context, ...args) {
 	//
 	const lstat = tryLinkStat(path_to_check)
 
-	if (lstat === false) return false
+	if (lstat === false) return "nonExisting"
 
 	if (lstat.isSymbolicLink()) {
 		const stat = tryStat(path_to_check)
 
-		if (stat === false) return "link->broken"
-		if (stat.isDirectory()) return "link->dir"
+		if (stat === false) return "brokenLink"
+		if (stat.isDirectory()) return "linkToDir"
 
-		return "link->file"
+		return "linkToFile"
 	}
 
 	if (lstat.isDirectory()) return "dir"
