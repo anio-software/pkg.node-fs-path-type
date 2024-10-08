@@ -1,7 +1,7 @@
 {
   "name": "@anio-fs/path-type",
   "type": "module",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "description": "Determine the type of a path.",
   "exports": {
     ".": {
