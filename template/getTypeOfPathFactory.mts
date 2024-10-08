@@ -68,7 +68,11 @@ export default function(context_or_options : UsableContextType = {}) : typeof fn
 
 	return async function getTypeOfPath(...paths : string[]) : ReturnType<typeof fn> {
 //	return function getTypeOfPathSync(...paths : string[]) : ReturnType<typeof fn> {
-		return await getTypeOfPathImplementation(context, ...paths)
-//		return getTypeOfPathImplementation(context, ...paths)
+		const type = await getTypeOfPathImplementation(context, ...paths)
+//		const type = getTypeOfPathImplementation(context, ...paths)
+
+		context.log.trace(`type of "${path.join(...paths)}" is "${type}"`)
+
+		return type
 	}
 }
