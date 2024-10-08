@@ -5,8 +5,8 @@ import {useContext} from "@fourtune/realm-js"
 import type {ContextInstanceType, UsableContextType} from "@fourtune/realm-js"
 import fs from "node:fs"
 import PathType from "../../export/PathType.mts"
-import impl from "./getTypeOfPath.mts"
-//import impl from "./getTypeOfPathSync.mts"
+import fn from "./getTypeOfPath.mts"
+//import fn from "./getTypeOfPathSync.mts"
 
 async function tryStat(path : string) : Promise<false | fs.Stats> {
 //function tryStat(path : string) : false | fs.Stats {
@@ -63,11 +63,11 @@ async function getTypeOfPathImplementation(context : ContextInstanceType, ...arg
 	return PathType.regularFile
 }
 
-export default function(context_or_options : UsableContextType = {}) : typeof impl {
+export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
-	return async function getTypeOfPath(...paths : string[]) : Promise<PathType> {
-//	return function getTypeOfPathSync(...paths : string[]) : PathType {
+	return async function getTypeOfPath(...paths : string[]) : ReturnType<typeof fn> {
+//	return function getTypeOfPathSync(...paths : string[]) : ReturnType<typeof fn> {
 		return await getTypeOfPathImplementation(context, ...paths)
 //		return getTypeOfPathImplementation(context, ...paths)
 	}
