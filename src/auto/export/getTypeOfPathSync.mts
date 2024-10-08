@@ -23,6 +23,6 @@ const impl = factory()
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export default function(...paths : string[]) : PathType {
-	return impl(...paths)
+export default function(paths : string[] | string) : PathType {
+	return impl(paths)
 }

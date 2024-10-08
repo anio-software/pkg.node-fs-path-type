@@ -30,9 +30,7 @@ function tryLinkStat(path : string) : false | fs.Stats {
 	}
 }
 
-function getTypeOfPathImplementation(context : ContextInstanceType, ...args : string[]) : PathType {
-	const path_to_check = path.join(...args)
-
+function getTypeOfPathImplementation(context : ContextInstanceType, path_to_check : string) : PathType {
 	//
 	// try lstat first in case path is a symbolic link
 	//
@@ -57,10 +55,12 @@ function getTypeOfPathImplementation(context : ContextInstanceType, ...args : st
 export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
-	return function getTypeOfPathSync(...paths : string[]) : ReturnType<typeof fn> {
-		const type = getTypeOfPathImplementation(context, ...paths)
+	return function getTypeOfPathSync(paths : string[] | string) : ReturnType<typeof fn> {
+		const full_path = Array.isArray(paths) ? path.join(...paths) : paths
 
-		context.log.trace(`type of "${path.join(...paths)}" is "${type}"`)
+		const type = getTypeOfPathImplementation(context, full_path)
+
+		context.log.trace(`type of "${full_path}" is "${type}"`)
 
 		return type
 	}

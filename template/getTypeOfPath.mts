@@ -25,8 +25,8 @@ const impl = factory()
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export default async function(...paths : string[]) : Promise<PathType> {
-//export default function(...paths : string[]) : PathType {
-	return await impl(...paths)
-//	return impl(...paths)
+export default async function(paths : string[] | string) : Promise<PathType> {
+//export default function(paths : string[] | string) : PathType {
+	return await impl(paths)
+//	return impl(paths)
 }

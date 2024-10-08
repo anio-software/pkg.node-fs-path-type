@@ -30,9 +30,7 @@ async function tryLinkStat(path : string) : Promise<false | fs.Stats> {
 	}
 }
 
-async function getTypeOfPathImplementation(context : ContextInstanceType, ...args : string[]) : Promise<PathType> {
-	const path_to_check = path.join(...args)
-
+async function getTypeOfPathImplementation(context : ContextInstanceType, path_to_check : string) : Promise<PathType> {
 	//
 	// try lstat first in case path is a symbolic link
 	//
@@ -57,10 +55,12 @@ async function getTypeOfPathImplementation(context : ContextInstanceType, ...arg
 export default function(context_or_options : UsableContextType = {}) : typeof fn {
 	const context = useContext(context_or_options)
 
-	return async function getTypeOfPath(...paths : string[]) : ReturnType<typeof fn> {
-		const type = await getTypeOfPathImplementation(context, ...paths)
+	return async function getTypeOfPath(paths : string[] | string) : ReturnType<typeof fn> {
+		const full_path = Array.isArray(paths) ? path.join(...paths) : paths
 
-		context.log.trace(`type of "${path.join(...paths)}" is "${type}"`)
+		const type = await getTypeOfPathImplementation(context, full_path)
+
+		context.log.trace(`type of "${full_path}" is "${type}"`)
 
 		return type
 	}
