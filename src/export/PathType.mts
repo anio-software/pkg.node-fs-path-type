@@ -1,4 +1,4 @@
-enum PathType {
+export enum PathType {
 	nonExisting = "nonExisting",
 	regularFile = "regularFile",
 	regularDir  = "regularDir",
@@ -6,5 +6,3 @@ enum PathType {
 	linkToDir   = "linkToDir",
 	brokenLink  = "brokenLink"
 }
-
-export default PathType

@@ -1,5 +1,5 @@
-import PathType from "../../export/PathType.mts"
-import factory from "./getTypeOfPathFactory.mts"
+import {PathType} from "../../export/PathType.mts"
+import {getTypeOfPathFactory as factory} from "./getTypeOfPathFactory.mts"
 
 const impl = factory()
 
@@ -23,6 +23,6 @@ const impl = factory()
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export default async function(paths : string[] | string) : Promise<PathType> {
+export async function getTypeOfPath(paths : string[] | string) : Promise<PathType> {
 	return await impl(paths)
 }

@@ -1,5 +1,5 @@
-import PathType from "../../export/PathType.mts"
-import factory from "./getTypeOfPathSyncFactory.mts"
+import {PathType} from "../../export/PathType.mts"
+import {getTypeOfPathSyncFactory as factory} from "./getTypeOfPathSyncFactory.mts"
 
 const impl = factory()
 
@@ -23,6 +23,6 @@ const impl = factory()
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export default function(paths : string[] | string) : PathType {
+export function getTypeOfPathSync(paths : string[] | string) : PathType {
 	return impl(paths)
 }
