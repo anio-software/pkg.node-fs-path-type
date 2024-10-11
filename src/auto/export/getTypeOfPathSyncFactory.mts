@@ -1,67 +1,24 @@
-import {stat, lstat} from "@anio-fs/api/sync"
-import path from "node:path"
+// Warning: this file was automatically created by fourtune vXXXXX
+// You will find more information about the specific fourtune version used inside the file src/auto/VERSION.txt
+// You should commit this file to source control
+import type {UserContextType} from "@fourtune/realm-js"
 import {useContext} from "@fourtune/realm-js"
-import type {ContextInstanceType, UsableContextType} from "@fourtune/realm-js"
-import fs from "node:fs"
-import {PathType} from "../../export/PathType.mts"
-import {getTypeOfPathSync as fn} from "./getTypeOfPathSync.mts"
 
-function tryStat(path : string) : false | fs.Stats {
-	try {
-		return stat(path)
-	} catch (e : unknown) {
-		const error = e as NodeJS.ErrnoException
+import type {DependenciesType} from "./_DependenciesSyncType.d.mts"
 
-		if (error.code === "ENOENT") return false
+import implementation from "./_implementationSync.mts"
 
-		throw error
-	}
-}
+/* needed to make doctypes work in LSP */
+import type {ImplementationDocType} from "./_implementationSync.mts"
 
-function tryLinkStat(path : string) : false | fs.Stats {
-	try {
-		return lstat(path)
-	} catch (e : unknown) {
-		const error = e as NodeJS.ErrnoException
 
-		if (error.code === "ENOENT") return false
+/* ImplementationDocType is needed to make doctypes work in LSP */
+export function getTypeOfPathSyncFactory(user : UserContextType = {}) : ImplementationDocType {
+	const context = useContext(user)
 
-		throw error
-	}
-}
+	const dependencies : DependenciesType = {}
 
-function getTypeOfPathImplementation(context : ContextInstanceType, path_to_check : string) : PathType {
-	//
-	// try lstat first in case path is a symbolic link
-	//
-	const lstat = tryLinkStat(path_to_check)
-
-	if (lstat === false) return PathType.nonExisting
-
-	if (lstat.isSymbolicLink()) {
-		const stat = tryStat(path_to_check)
-
-		if (stat === false) return PathType.brokenLink
-		if (stat.isDirectory()) return PathType.linkToDir
-
-		return PathType.linkToFile
-	}
-
-	if (lstat.isDirectory()) return PathType.regularDir
-
-	return PathType.regularFile
-}
-
-export function getTypeOfPathSyncFactory(context_or_options : UsableContextType = {}) : typeof fn {
-	const context = useContext(context_or_options)
-
-	return function getTypeOfPathSync(paths : string[] | string) : ReturnType<typeof fn> {
-		const full_path = Array.isArray(paths) ? path.join(...paths) : paths
-
-		const type = getTypeOfPathImplementation(context, full_path)
-
-		context.log.trace(`type of "${full_path}" is "${type}"`)
-
-		return type
+	return function getTypeOfPathSync(...args: Parameters<ImplementationDocType>) : ReturnType<ImplementationDocType> {
+		return implementation(context, dependencies, ...args)
 	}
 }

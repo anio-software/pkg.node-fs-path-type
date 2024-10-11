@@ -1,28 +1,11 @@
-import {PathType} from "../../export/PathType.mts"
+// Warning: this file was automatically created by fourtune vXXXXX
+// You will find more information about the specific fourtune version used inside the file src/auto/VERSION.txt
+// You should commit this file to source control
 import {getTypeOfPathSyncFactory as factory} from "./getTypeOfPathSyncFactory.mts"
+
+/* ImplementationDocType is needed to make doctypes work in LSP */
+import type {ImplementationDocType} from "./_implementationSync.mts"
 
 const impl = factory()
 
-/**
- * @brief Synchronously get the type of a path.
- * @description
- * Determines the type of supplied path.
- * Note: symbolic links are never resolved.
- * @return
- * The type of the path which can be the following values:
- * 
- * `nonExisting` - path does not exist
- * 
- * `regularFile` - path is a file
- * 
- * `regularDir` - path is a directory
- * 
- * `linkToFile` - path is a symbolic link and points to a file
- * 
- * `linkToDir` - path is a symbolic link and points to a directory
- * 
- * `brokenLink` - path is a symbolic link and points to a non existing path
- */
-export function getTypeOfPathSync(paths : string[] | string) : PathType {
-	return impl(paths)
-}
+export const getTypeOfPathSync : ImplementationDocType = impl
