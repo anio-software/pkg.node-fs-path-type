@@ -4,12 +4,12 @@
 import type {UserContextType} from "@fourtune/realm-js"
 import {useContext} from "@fourtune/realm-js"
 
-import type {DependenciesType} from "./_DependenciesType.d.mts"
+import type {DependenciesType} from "#/auto/export/_DependenciesType.d.mts"
 
-import implementation from "./_implementation.mts"
+import implementation from "#/auto/export/_implementation.mts"
 
 /* needed to make doctypes work in LSP */
-import type {ImplementationDocType} from "./_implementation.mts"
+import type {ImplementationDocType} from "#/auto/export/_ImplementationDocType.d.mts"
 
 
 /* ImplementationDocType is needed to make doctypes work in LSP */
