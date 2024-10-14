@@ -1,18 +1,18 @@
 /* -------- required imports by template -------- */
 import type {ContextInstanceType} from "@fourtune/realm-js"
-import type {DependenciesType} from "#/auto/export/_DependenciesSyncType.d.mts"
+import type {DependenciesType} from "#/auto/DependenciesType.d.mts"
 
-import type {ImplementationDocType} from "#/auto/export/_ImplementationSyncDocType.d.mts"
+import type {ImplementationDocType} from "#/auto/ImplementationDocType.d.mts"
 /* -------- required imports by template -------- */
 
 import path from "node:path"
 import fs from "node:fs"
 import {PathType} from "#/export/PathType.mts"
-import {stat, lstat} from "@anio-fs/api/sync"
+import {stat, lstat} from "@anio-fs/api/async"
 
-function tryStat(path : string) : false | fs.Stats {
+async function tryStat(path : string) : Promise<false | fs.Stats> {
 	try {
-		return stat(path)
+		return await stat(path)
 	} catch (e : unknown) {
 		const error = e as NodeJS.ErrnoException
 
@@ -22,9 +22,9 @@ function tryStat(path : string) : false | fs.Stats {
 	}
 }
 
-function tryLinkStat(path : string) : false | fs.Stats {
+async function tryLinkStat(path : string) : Promise<false | fs.Stats> {
 	try {
-		return lstat(path)
+		return await lstat(path)
 	} catch (e : unknown) {
 		const error = e as NodeJS.ErrnoException
 
@@ -34,7 +34,7 @@ function tryLinkStat(path : string) : false | fs.Stats {
 	}
 }
 
-export default function(
+export default async function(
 	context : ContextInstanceType,
 	dependencies : DependenciesType,
 	/* add additional parameters here */
@@ -51,12 +51,12 @@ export default function(
 	//
 	// try lstat first in case path is a symbolic link
 	//
-	const lstat = tryLinkStat(path_to_check)
+	const lstat = await tryLinkStat(path_to_check)
 
 	if (lstat === false) return r(PathType.nonExisting)
 
 	if (lstat.isSymbolicLink()) {
-		const stat = tryStat(path_to_check)
+		const stat = await tryStat(path_to_check)
 
 		if (stat === false) return r(PathType.brokenLink)
 		if (stat.isDirectory()) return r(PathType.linkToDir)
