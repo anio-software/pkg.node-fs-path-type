@@ -1,10 +1,10 @@
 import {
 	getProjectPackageJSON,
 	getFourtuneConfiguration
-} from "@fourtune/realm-js/project"
+} from "@fourtune/realm-js/v0/project"
 
-import type {UserContext} from "@fourtune/realm-js/runtime"
-import {useContext} from "@fourtune/realm-js/runtime"
+import type {UserContext} from "@fourtune/realm-js/v0/runtime"
+import {useContext} from "@fourtune/realm-js/v0/runtime"
 
 import type {DependenciesType} from "#~auto/DependenciesType.d.mts"
 
