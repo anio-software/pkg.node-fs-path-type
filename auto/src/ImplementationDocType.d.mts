@@ -1,5 +1,5 @@
 /* define and describe your function api here */
-import type {PathType} from "#~src/export/PathType.mts"
+import type {PathType} from "#~src/export/PathType.d.mts"
 
 export type ImplementationDocType = {
 	/**

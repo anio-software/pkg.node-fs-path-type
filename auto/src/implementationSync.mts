@@ -7,7 +7,7 @@ import type {ImplementationDocType} from "#~auto/ImplementationSyncDocType.d.mts
 
 import path from "node:path"
 import fs from "node:fs"
-import {PathType} from "#~src/export/PathType.mts"
+import type {PathType} from "#~src/export/PathType.d.mts"
 import {stat, lstat} from "@anio-fs/api/sync"
 
 function tryStat(path : string) : false | fs.Stats {
@@ -53,18 +53,18 @@ export default function(
 	//
 	const lstat = tryLinkStat(path_to_check)
 
-	if (lstat === false) return r(PathType.nonExisting)
+	if (lstat === false) return r("nonExisting")
 
 	if (lstat.isSymbolicLink()) {
 		const stat = tryStat(path_to_check)
 
-		if (stat === false) return r(PathType.brokenLink)
-		if (stat.isDirectory()) return r(PathType.linkToDir)
+		if (stat === false) return r("brokenLink")
+		if (stat.isDirectory()) return r("linkToDir")
 
-		return r(PathType.linkToFile)
+		return r("linkToFile")
 	}
 
-	if (lstat.isDirectory()) return r(PathType.regularDir)
+	if (lstat.isDirectory()) return r("regularDir")
 
-	return r(PathType.regularFile)
+	return r("regularFile")
 }
