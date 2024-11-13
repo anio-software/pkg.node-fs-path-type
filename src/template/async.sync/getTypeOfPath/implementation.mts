@@ -1,10 +1,10 @@
 /* -------- required imports by template -------- */
 import type {ContextInstance} from "@fourtune/realm-js/v0/runtime"
-import type {DependenciesType} from "#~auto/DependenciesType.d.mts"
-//>import type {DependenciesType} from "#~auto/DependenciesSyncType.d.mts"
+import type {DependenciesType} from "#~auto/fourtune/async.sync/getTypeOfPath/DependenciesType.d.mts"
+//>import type {DependenciesType} from "#~auto/fourtune/async.sync/getTypeOfPath/DependenciesSyncType.d.mts"
 
-import type {ImplementationDocType} from "#~auto/ImplementationDocType.d.mts"
-//>import type {ImplementationDocType} from "#~auto/ImplementationSyncDocType.d.mts"
+import type {ImplementationDocType} from "#~auto/fourtune/async.sync/getTypeOfPath/ImplementationDocType.d.mts"
+//>import type {ImplementationDocType} from "#~auto/fourtune/async.sync/getTypeOfPath/ImplementationSyncDocType.d.mts"
 /* -------- required imports by template -------- */
 
 import path from "node:path"
