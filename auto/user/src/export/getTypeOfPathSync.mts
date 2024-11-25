@@ -1,4 +1,3 @@
-import {getTypeOfPathSyncFactory as factory} from "#~auto/export/getTypeOfPathSyncFactory.mts"
-import type {Signature} from "#~auto/getTypeOfPathSync.mts"
+import {getTypeOfPathSyncFactory as factory, type Signature} from "#~auto/export/getTypeOfPathSyncFactory.mts"
 
 export const getTypeOfPathSync : Signature = factory()
