@@ -1,10 +1,8 @@
-import {useContext, type UserContext} from "@fourtune/realm-js/v0/runtime"
+import {implementation, type AnioJsDependencies} from "#~auto/getTypeOfPath.mts"
+import type {UserContext} from "@fourtune/realm-js/v0/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
-import type {AnioJsDependencies} from "#~auto/getTypeOfPath.mts"
-import {implementation} from "#~auto/getTypeOfPath.mts"
-import type {ContextInstance} from "@fourtune/realm-js/v0/runtime"
+import {useContext} from "@fourtune/realm-js/v0/runtime"
 import type {PathType} from "#~src/export/PathType.d.mts"
-
 /**
  * @brief Asynchronously get the type of a path.
  * @description
@@ -25,17 +23,15 @@ import type {PathType} from "#~src/export/PathType.d.mts"
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export type Signature = (
-	/* add additional parameters here */
+declare function getTypeOfPath(
 	paths: string[] | string
-) => Promise<PathType>
+) : Promise<PathType>
 
-export function getTypeOfPathFactory(user: UserContext = {}) : Signature {
+export function getTypeOfPathFactory(user : UserContext = {}) : typeof getTypeOfPath {
 	const project = getProject()
 	const context = useContext(project, user)
 	const dependencies : AnioJsDependencies = {}
-
-	return async function getTypeOfPath(paths : string[] | string) {
+	return async function getTypeOfPath(paths: string[] | string) : Promise<PathType> {
 		return await implementation(context, dependencies, paths)
 	}
 }
