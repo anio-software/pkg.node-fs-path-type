@@ -1,5 +1,6 @@
 import {implementation} from "#~auto/getTypeOfPathSync.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
+import {getProject} from "@fourtune/realm-js/v0/project"
 
 // vvv types needed for function signature
 import type {PathType} from "#~src/export/PathType.d.mts"
@@ -42,7 +43,18 @@ declare function getTypeOfPathSync(
  * An instance of the function 'getTypeOfPathSync'.
  */
 export function getTypeOfPathSyncFactory(context: RuntimeWrappedContextInstance) : typeof getTypeOfPathSync {
+	const project = getProject()
+	const local_context : RuntimeWrappedContextInstance = {
+		...context,
+		_package: {
+			name: project.package_json.name,
+			version: project.package_json.version,
+			author: project.package_json.author,
+			license: project.package_json.license
+		}
+	}
+
 	return function getTypeOfPathSync(paths: string[] | string) : PathType {
-		return implementation(context, paths)
+		return implementation(local_context, paths)
 	}
 }
