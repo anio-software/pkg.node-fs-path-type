@@ -1,4 +1,4 @@
-import type {ContextInstance} from "@fourtune/realm-js/v0/runtime"
+import {useContext, type RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import type {PathType} from "#~src/export/PathType.d.mts"
 
 export type AnioJsDependencies = {}
@@ -52,11 +52,13 @@ function tryLinkStat(path : string) : false | fs.Stats {
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
 export function implementation(
-	context : ContextInstance,
+	wrapped_context : RuntimeWrappedContextInstance,
 	dependencies : AnioJsDependencies,
 	/* add additional parameters here */
 	paths : string[] | string
 ) : PathType {
+	const context = useContext(wrapped_context, 0)
+
 	const path_to_check = Array.isArray(paths) ? path.join(...paths) : paths
 
 	const r = (type : PathType) : PathType => {

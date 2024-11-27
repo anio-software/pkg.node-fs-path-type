@@ -1,8 +1,10 @@
 import {implementation, type AnioJsDependencies} from "#~auto/getTypeOfPathSync.mts"
-import type {UserContext} from "@fourtune/realm-js/v0/runtime"
-import {getProject} from "@fourtune/realm-js/v0/project"
-import {useContext} from "@fourtune/realm-js/v0/runtime"
+import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
+
+// vvv types needed for function signature
 import type {PathType} from "#~src/export/PathType.d.mts"
+// ^^^ types needed for function signature
+
 /**
  * @brief Synchronously get the type of a path.
  * @description
@@ -27,10 +29,21 @@ declare function getTypeOfPathSync(
 	paths: string[] | string
 ) : PathType
 
-export function getTypeOfPathSyncFactory(user : UserContext = {}) : typeof getTypeOfPathSync {
-	const project = getProject()
-	const context = useContext(project, user)
+/**
+ * @brief
+ * Create an instance of the function 'getTypeOfPathSync'.
+ *
+ * @param user
+ * Options object (see @fourtune/realm-js/v0/runtime) or an already
+ * created context with createContext().
+ * This parameter is optional.
+ *
+ * @return
+ * An instance of the function 'getTypeOfPathSync'.
+ */
+export function getTypeOfPathSyncFactory(context: RuntimeWrappedContextInstance) : typeof getTypeOfPathSync {
 	const dependencies : AnioJsDependencies = {}
+
 	return function getTypeOfPathSync(paths: string[] | string) : PathType {
 		return implementation(context, dependencies, paths)
 	}
