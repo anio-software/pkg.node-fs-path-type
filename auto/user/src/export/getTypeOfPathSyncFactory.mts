@@ -1,4 +1,4 @@
-import {implementation, type AnioJsDependencies} from "#~auto/getTypeOfPathSync.mts"
+import {implementation} from "#~auto/getTypeOfPathSync.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 
 // vvv types needed for function signature
@@ -42,9 +42,7 @@ declare function getTypeOfPathSync(
  * An instance of the function 'getTypeOfPathSync'.
  */
 export function getTypeOfPathSyncFactory(context: RuntimeWrappedContextInstance) : typeof getTypeOfPathSync {
-	const dependencies : AnioJsDependencies = {}
-
 	return function getTypeOfPathSync(paths: string[] | string) : PathType {
-		return implementation(context, dependencies, paths)
+		return implementation(context, paths)
 	}
 }
