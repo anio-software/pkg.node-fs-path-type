@@ -1,8 +1,6 @@
 import {useContext, type RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import type {PathType} from "#~src/export/PathType.d.mts"
 
-export type AnioJsDependencies = {}
-
 import path from "node:path"
 import fs from "node:fs"
 import {stat, lstat} from "@anio-fs/api/async"
@@ -60,7 +58,6 @@ async function tryLinkStat(path : string) : Promise<false | fs.Stats> {
 export async function implementation(
 //>export function implementation(
 	wrapped_context : RuntimeWrappedContextInstance,
-	dependencies : AnioJsDependencies,
 	/* add additional parameters here */
 	paths : string[] | string
 ) : Promise<PathType> {
