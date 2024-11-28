@@ -1,4 +1,4 @@
-import {generateFactoryFiles} from "@fourtune/realm-js"
+import {generateFactoryFiles} from "@fourtune/realm-js/v0/autogenerate"
 
 export default {
 	realm: "js",
