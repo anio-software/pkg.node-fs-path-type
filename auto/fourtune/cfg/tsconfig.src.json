@@ -11,6 +11,9 @@
             "#~auto/*": [
                 "./auto/user/src/*"
             ],
+            "#~synthetic/*": [
+                "./auto/synthetic/src/*"
+            ],
             "#~assets/*": [
                 "./assets/*"
             ]

@@ -11,6 +11,9 @@
             "#~auto/*": [
                 "./auto/user/src/*"
             ],
+            "#~synthetic/*": [
+                "./auto/synthetic/src/*"
+            ],
             "#~assets/*": [
                 "./assets/*"
             ]
@@ -18,6 +21,7 @@
     },
     "include": [
         "../../../auto/fourtune/src/**/*",
+        "../../../auto/synthetic/src/**/*",
         "../../../auto/user/src/**/*"
     ]
 }
