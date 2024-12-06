@@ -1,10 +1,11 @@
-import {implementation} from "#~auto/getTypeOfPath.mts"
+import {implementation} from "#~synthetic/getTypeOfPath.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
 
-// vvv types needed for function signature
+// vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
-// ^^^ types needed for function signature
+/* couldn't find the type 'Promise' at the top level */
+// ^^^--- types needed for implementation
 
 /**
  * @brief Asynchronously get the type of a path.

@@ -1,7 +1,9 @@
 import {createContext} from "@fourtune/realm-js/v0/runtime"
-// vvv types needed for function signature
+
+// vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
-// ^^^ types needed for function signature
+/* couldn't find the type 'Promise' at the top level */
+// ^^^--- types needed for implementation
 
 import {getTypeOfPathFactory as factory} from "#~auto/export/getTypeOfPathFactory.mts"
 

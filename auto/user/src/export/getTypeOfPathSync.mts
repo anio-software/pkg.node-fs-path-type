@@ -1,7 +1,8 @@
 import {createContext} from "@fourtune/realm-js/v0/runtime"
-// vvv types needed for function signature
+
+// vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
-// ^^^ types needed for function signature
+// ^^^--- types needed for implementation
 
 import {getTypeOfPathSyncFactory as factory} from "#~auto/export/getTypeOfPathSyncFactory.mts"
 

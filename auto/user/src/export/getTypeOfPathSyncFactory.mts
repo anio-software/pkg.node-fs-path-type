@@ -1,10 +1,10 @@
-import {implementation} from "#~auto/getTypeOfPathSync.mts"
+import {implementation} from "#~synthetic/getTypeOfPathSync.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
 
-// vvv types needed for function signature
+// vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
-// ^^^ types needed for function signature
+// ^^^--- types needed for implementation
 
 /**
  * @brief Synchronously get the type of a path.
