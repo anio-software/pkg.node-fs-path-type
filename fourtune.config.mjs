@@ -1,8 +1,10 @@
 import {generateFactoryFiles} from "@fourtune/realm-js/v0/autogenerate"
 
 export default {
-	realm: "js",
-	type: "package",
+	realm: {
+		name: "js",
+		type: "package"
+	},
 
 	autogenerate: {
 		...generateFactoryFiles({
