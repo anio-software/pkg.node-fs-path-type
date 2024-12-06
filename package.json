@@ -1,11 +1,11 @@
 {
-  "name": "@anio-fs/path-type",
+  "name": "@aniojs/node-path-type",
   "type": "module",
-  "version": "15.0.1",
+  "version": "0.0.0",
   "description": "Determine the type of a path.",
   "exports": {
     ".": {
-      "types": "./dist/default/index.d.mts",
+      "types": "./dist/default/index.min.d.mts",
       "import": "./dist/default/index.min.mjs"
     }
   },
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anio-fs-org/path-type.git"
+    "url": "git+https://github.com/aniojs-org/node-path-type.git"
   },
   "devDependencies": {
     "@anio-fs/api": "^11.0.0",
