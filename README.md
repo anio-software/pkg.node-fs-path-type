@@ -1,4 +1,4 @@
-# @anio-fs/path-type
+# @aniojs/node-fs-path-type
 
 Determine the type of a path.
 
@@ -13,7 +13,7 @@ Determine the type of a path.
 
 ```js
 import fs from "node:fs"
-import {getTypeOfPath} from "@anio-fs/path-type"
+import {getTypeOfPath} from "@aniojs/node-fs-path-type"
 
 const entries = fs.readdirSync("examples/files")
 
