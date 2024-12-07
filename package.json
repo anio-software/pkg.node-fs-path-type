@@ -16,7 +16,6 @@
     "url": "git+https://github.com/aniojs-org/node-path-type.git"
   },
   "devDependencies": {
-    "@anio-fs/api": "^11.0.0",
     "@fourtune/core": "^0.1101.0",
     "@fourtune/realm-js": "^0.30000.2",
     "fourtune": "^0.30000.0"
