@@ -1,5 +1,5 @@
 {
-  "name": "@aniojs/node-path-type",
+  "name": "@aniojs/node-fs-path-type",
   "type": "module",
   "version": "0.1.0",
   "description": "Determine the type of a path.",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aniojs-org/node-path-type.git"
+    "url": "git+https://github.com/aniojs-org/node-fs-path-type.git"
   },
   "devDependencies": {
     "@aniojs-private/node-async-sync-fs": "^0.1.1",
