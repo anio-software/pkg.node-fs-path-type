@@ -4,12 +4,12 @@ Determine the type of a path.
 
 |Type|Return value|
 |---|---|
-|Regular File|`file`|
-|Regular Directory|`dir`|
-|Link to a file|`link->file`|
-|Link to a directory|`link->dir`|
-|Dangling link|`link->broken`|
-|Non existing path|`false`|
+|Regular File|`regularFile`|
+|Regular Directory|`regularDir`|
+|Link to a file|`linkToFile`|
+|Link to a directory|`linktToDir`|
+|Dangling link|`brokenLink`|
+|Non existing path|`nonExisting`|
 
 ```js
 import fs from "node:fs"
