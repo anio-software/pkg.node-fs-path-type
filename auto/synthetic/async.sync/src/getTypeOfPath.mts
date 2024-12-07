@@ -3,7 +3,7 @@ import type {PathType} from "#~src/export/PathType.d.mts"
 
 import path from "node:path"
 import fs from "node:fs"
-import {stat, lstat} from "@anio-fs/api/async"
+import {stat, lstat} from "@aniojs-private/node-async-sync-fs/async"
 
 async function tryStat(path : string) : Promise<false | fs.Stats> {
 	try {
