@@ -1,13 +1,14 @@
-import {implementation} from "#~synthetic/getTypeOfPathSync.mts"
+import {implementation} from "#~synthetic/async.sync/getTypeOfPath.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
 
 // vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
+/* couldn't find the type 'Promise' at the top level */
 // ^^^--- types needed for implementation
 
 /**
- * @brief Synchronously get the type of a path.
+ * @brief Asynchronously get the type of a path.
  * @description
  * Determines the type of supplied path.
  * Note: symbolic links are never resolved.
@@ -26,13 +27,13 @@ import type {PathType} from "#~src/export/PathType.d.mts"
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-declare function getTypeOfPathSync(
+declare function getTypeOfPath(
 	paths: string[] | string
-) : PathType
+) : Promise<PathType>
 
 /**
  * @brief
- * Create an instance of the function 'getTypeOfPathSync'.
+ * Create an instance of the function 'getTypeOfPath'.
  *
  * @param user
  * Options object (see @fourtune/realm-js/v0/runtime) or an already
@@ -40,9 +41,9 @@ declare function getTypeOfPathSync(
  * This parameter is optional.
  *
  * @return
- * An instance of the function 'getTypeOfPathSync'.
+ * An instance of the function 'getTypeOfPath'.
  */
-export function getTypeOfPathSyncFactory(context: RuntimeWrappedContextInstance) : typeof getTypeOfPathSync {
+export function getTypeOfPathFactory(context: RuntimeWrappedContextInstance) : typeof getTypeOfPath {
 	const project = getProject()
 	const local_context : RuntimeWrappedContextInstance = {
 		...context,
@@ -54,7 +55,7 @@ export function getTypeOfPathSyncFactory(context: RuntimeWrappedContextInstance)
 		}
 	}
 
-	return function getTypeOfPathSync(paths: string[] | string) : PathType {
-		return implementation(local_context, paths)
+	return async function getTypeOfPath(paths: string[] | string) : Promise<PathType> {
+		return await implementation(local_context, paths)
 	}
 }

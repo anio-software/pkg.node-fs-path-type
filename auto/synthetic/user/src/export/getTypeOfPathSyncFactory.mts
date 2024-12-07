@@ -1,14 +1,13 @@
-import {implementation} from "#~synthetic/getTypeOfPath.mts"
+import {implementation} from "#~synthetic/async.sync/getTypeOfPathSync.mts"
 import type {RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
 import {getProject} from "@fourtune/realm-js/v0/project"
 
 // vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
-/* couldn't find the type 'Promise' at the top level */
 // ^^^--- types needed for implementation
 
 /**
- * @brief Asynchronously get the type of a path.
+ * @brief Synchronously get the type of a path.
  * @description
  * Determines the type of supplied path.
  * Note: symbolic links are never resolved.
@@ -27,13 +26,13 @@ import type {PathType} from "#~src/export/PathType.d.mts"
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-declare function getTypeOfPath(
+declare function getTypeOfPathSync(
 	paths: string[] | string
-) : Promise<PathType>
+) : PathType
 
 /**
  * @brief
- * Create an instance of the function 'getTypeOfPath'.
+ * Create an instance of the function 'getTypeOfPathSync'.
  *
  * @param user
  * Options object (see @fourtune/realm-js/v0/runtime) or an already
@@ -41,9 +40,9 @@ declare function getTypeOfPath(
  * This parameter is optional.
  *
  * @return
- * An instance of the function 'getTypeOfPath'.
+ * An instance of the function 'getTypeOfPathSync'.
  */
-export function getTypeOfPathFactory(context: RuntimeWrappedContextInstance) : typeof getTypeOfPath {
+export function getTypeOfPathSyncFactory(context: RuntimeWrappedContextInstance) : typeof getTypeOfPathSync {
 	const project = getProject()
 	const local_context : RuntimeWrappedContextInstance = {
 		...context,
@@ -55,7 +54,7 @@ export function getTypeOfPathFactory(context: RuntimeWrappedContextInstance) : t
 		}
 	}
 
-	return async function getTypeOfPath(paths: string[] | string) : Promise<PathType> {
-		return await implementation(local_context, paths)
+	return function getTypeOfPathSync(paths: string[] | string) : PathType {
+		return implementation(local_context, paths)
 	}
 }

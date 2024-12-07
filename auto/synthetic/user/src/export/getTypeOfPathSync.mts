@@ -2,15 +2,14 @@ import {createContext} from "@fourtune/realm-js/v0/runtime"
 
 // vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
-/* couldn't find the type 'Promise' at the top level */
 // ^^^--- types needed for implementation
 
-import {getTypeOfPathFactory as factory} from "#~auto/export/getTypeOfPathFactory.mts"
+import {getTypeOfPathSyncFactory as factory} from "#~synthetic/user/export/getTypeOfPathSyncFactory.mts"
 
 const fn = factory(createContext())
 
 /**
- * @brief Asynchronously get the type of a path.
+ * @brief Synchronously get the type of a path.
  * @description
  * Determines the type of supplied path.
  * Note: symbolic links are never resolved.
@@ -29,6 +28,6 @@ const fn = factory(createContext())
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export async function getTypeOfPath(paths: string[] | string) : Promise<PathType> {
-	return await fn(paths)
+export function getTypeOfPathSync(paths: string[] | string) : PathType {
+	return fn(paths)
 }
