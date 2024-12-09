@@ -2,7 +2,7 @@ import {createContext} from "@fourtune/realm-js/v0/runtime"
 
 // vvv--- types needed for implementation
 import type {PathType} from "#~src/export/PathType.d.mts"
-/* couldn't find the type 'Promise' at the top level */
+/* couldn't find a user defined type named 'Promise' at the top level */
 // ^^^--- types needed for implementation
 
 import {getTypeOfPathFactory as factory} from "#~synthetic/user/export/getTypeOfPathFactory.mts"
