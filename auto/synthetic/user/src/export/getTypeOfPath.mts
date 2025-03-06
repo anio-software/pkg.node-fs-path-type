@@ -7,8 +7,6 @@ import type {PathType} from "#~src/export/PathType.d.mts"
 
 import {getTypeOfPathFactory as factory} from "#~synthetic/user/export/getTypeOfPathFactory.mts"
 
-let __fnImplementation: any = null
-
 /**
  * @brief Asynchronously get the type of a path.
  * @description
@@ -30,7 +28,7 @@ let __fnImplementation: any = null
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
 export async function getTypeOfPath(paths: string[] | string) : Promise<PathType> {
-	if (__fnImplementation === null) __fnImplementation = factory(createContext());
+	const __fnImplementation = factory(createContext())
 
 	return await __fnImplementation(paths)
 }

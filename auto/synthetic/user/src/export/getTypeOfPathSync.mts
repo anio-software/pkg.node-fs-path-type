@@ -6,8 +6,6 @@ import type {PathType} from "#~src/export/PathType.d.mts"
 
 import {getTypeOfPathSyncFactory as factory} from "#~synthetic/user/export/getTypeOfPathSyncFactory.mts"
 
-let __fnImplementation: any = null
-
 /**
  * @brief Synchronously get the type of a path.
  * @description
@@ -29,7 +27,7 @@ let __fnImplementation: any = null
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
 export function getTypeOfPathSync(paths: string[] | string) : PathType {
-	if (__fnImplementation === null) __fnImplementation = factory(createContext());
+	const __fnImplementation = factory(createContext())
 
 	return __fnImplementation(paths)
 }
