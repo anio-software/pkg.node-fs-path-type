@@ -14,8 +14,5 @@
     "@fourtune/core": "^0.1101.0",
     "@fourtune/realm-js": "^1.0.3",
     "fourtune": "^0.30000.1"
-  },
-  "peerDependencies": {
-    "@types/node": ">=22.7.x"
   }
 }
