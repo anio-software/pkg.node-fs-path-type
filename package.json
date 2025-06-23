@@ -10,9 +10,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "@aniojs-private/node-async-sync-fs": "^0.2.1",
-    "@fourtune/core": "^0.1101.0",
-    "@fourtune/realm-js": "^1.0.3",
-    "fourtune": "^0.30000.1"
+    "@aniojs-private/node-async-sync-fs": "^0.2.1"
   }
 }
