@@ -49,6 +49,8 @@ async function tryLinkStat(path: string): Promise<"error" | "nonExisting" | fs.S
  * 
  * `nonExisting` - path does not exist
  * 
+ * `error` - an error occurred
+ * 
  * `file:regular` - path is a file
  * 
  * `dir:regular` - path is a directory
@@ -58,6 +60,8 @@ async function tryLinkStat(path: string): Promise<"error" | "nonExisting" | fs.S
  * `link:dir` - path is a symbolic link and points to a directory
  * 
  * `link:broken` - path is a symbolic link and points to a non existing path
+ * 
+ * `link:error` - an error occurred while trying to resolve the symbolic link
  */
 export async function __implementation(
 //>export function __implementationSync(
