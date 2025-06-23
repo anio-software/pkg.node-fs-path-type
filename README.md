@@ -16,10 +16,9 @@ Determine the type of a path.
 |Non existing path|`nonExisting`|
 |Error|`error`|
 
-
 ```js
 import fs from "node:fs"
-import {getTypeOfPath} from "@aniojs/node-fs-path-type"
+import {getTypeOfPath} from "@anio-software/pkg.node-fs-path-type"
 
 const entries = fs.readdirSync("examples/files")
 
