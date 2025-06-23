@@ -13,6 +13,7 @@ Determine the type of a path.
 |Link to a file|`link:file`|
 |Link to a directory|`link:dir`|
 |Dangling link|`link:broken`|
+|Link resolve error|`link:error`|
 |Non existing path|`nonExisting`|
 |Error|`error`|
 

@@ -9,4 +9,5 @@ export type PathType =
 	"dir:regular"    |
 	"link:file"      |
 	"link:dir"       |
-	"link:broken"
+	"link:broken"    |
+	"link:error"
