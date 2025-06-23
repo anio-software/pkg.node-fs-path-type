@@ -1,5 +1,5 @@
 export type PathType = 
-	"unknown"        |
+	"error"          |
 	"nonExisting"    |
 	"file:regular"   |
 //	"file:fifo"      |
