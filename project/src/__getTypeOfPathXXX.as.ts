@@ -49,15 +49,15 @@ async function tryLinkStat(path: string): Promise<false | fs.Stats> {
  * 
  * `nonExisting` - path does not exist
  * 
- * `regularFile` - path is a file
+ * `file:regular` - path is a file
  * 
- * `regularDir` - path is a directory
+ * `dir:regular` - path is a directory
  * 
- * `linkToFile` - path is a symbolic link and points to a file
+ * `link:file` - path is a symbolic link and points to a file
  * 
- * `linkToDir` - path is a symbolic link and points to a directory
+ * `link:dir` - path is a symbolic link and points to a directory
  * 
- * `brokenLink` - path is a symbolic link and points to a non existing path
+ * `link:broken` - path is a symbolic link and points to a non existing path
  */
 export async function __implementation(
 //>export function __implementationSync(
