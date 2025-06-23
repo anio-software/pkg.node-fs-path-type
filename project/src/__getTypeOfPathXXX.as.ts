@@ -1,4 +1,8 @@
-import {useContext, type RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
+import {
+	type EnkoreJSRuntimeContextOptions,
+	createContext
+} from "@anio-software/enkore.js-runtime"
+
 import type {PathType} from "#~export/PathType.ts"
 
 import path from "node:path"
@@ -55,14 +59,14 @@ async function tryLinkStat(path : string) : Promise<false | fs.Stats> {
  * 
  * `brokenLink` - path is a symbolic link and points to a non existing path
  */
-export async function implementation(
-//>export function implementation(
-	wrapped_context : RuntimeWrappedContextInstance,
+export async function __implementation(
+//>export function __implementationSync(
+	contextOptions : EnkoreJSRuntimeContextOptions,
 	/* add additional parameters here */
 	paths : string[] | string
 ) : Promise<PathType> {
 //>) : PathType {
-	const context = useContext(wrapped_context, 0)
+	const context = createContext(contextOptions, 0)
 
 	const path_to_check = Array.isArray(paths) ? path.join(...paths) : paths
 
