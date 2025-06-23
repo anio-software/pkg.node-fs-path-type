@@ -10,6 +10,9 @@
   },
   "type": "module",
   "devDependencies": {
+    "@anio-software/enkore": "^0.0.91",
+    "@anio-software/enkore.core": "^0.11.2",
+    "@anio-software/enkore.target-js-node": "^0.0.234-canary-22850f2c-c343c317",
     "@aniojs-private/node-async-sync-fs": "^0.2.1"
   }
 }
