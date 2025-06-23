@@ -4,12 +4,6 @@
   "author": "Anio Software <info@anio.software>",
   "description": "Determine the type of a path.",
   "license": "MIT",
-  "exports": {
-    ".": {
-      "types": "./dist/default/index.min.d.mts",
-      "import": "./dist/default/index.min.mjs"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anio-software/pkg.node-fs-path-type.git"
@@ -23,14 +17,5 @@
   },
   "peerDependencies": {
     "@types/node": ">=22.7.x"
-  },
-  "scripts": {
-    "prepare": "./node_modules/.bin/fourtune ."
-  },
-  "engines": {
-    "node": ">=22.7.x"
-  },
-  "files": [
-    "./dist/"
-  ]
+  }
 }
