@@ -88,13 +88,13 @@ export async function __implementation(
 		const stat = await tryStat(path_to_check)
 //>		const stat = tryStat(path_to_check)
 
-		if (stat === false) return r("brokenLink")
-		if (stat.isDirectory()) return r("linkToDir")
+		if (stat === false) return r("link:broken")
+		if (stat.isDirectory()) return r("link:dir")
 
-		return r("linkToFile")
+		return r("link:file")
 	}
 
-	if (lstat.isDirectory()) return r("regularDir")
+	if (lstat.isDirectory()) return r("dir:regular")
 
-	return r("regularFile")
+	return r("file:regular")
 }

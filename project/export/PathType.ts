@@ -1,8 +1,8 @@
 export type PathType = 
-	"unknown"     |
-	"nonExisting" |
-	"regularFile" |
-	"regularDir"  |
-	"linkToFile"  |
-	"linkToDir"   |
-	"brokenLink"
+	"unknown"      |
+	"nonExisting"  |
+	"file:regular" |
+	"dir:regular"  |
+	"link:file"    |
+	"link:dir"     |
+	"link:broken"
