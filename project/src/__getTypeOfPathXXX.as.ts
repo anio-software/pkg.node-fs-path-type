@@ -10,8 +10,8 @@ import fs from "node:fs"
 import {stat, lstat} from "@anio-software/pkg-private.node-consistent-fs/async"
 //>import {stat, lstat} from "@anio-software/pkg-private.node-consistent-fs/sync"
 
-async function tryStat(path: string): Promise<"nonExisting" | fs.Stats> {
-//>function tryStat(path: string): "nonExisting" | fs.Stats {
+async function tryStat(path: string): Promise<"error" | "nonExisting" | fs.Stats> {
+//>function tryStat(path: string): "error" | "nonExisting" | fs.Stats {
 	try {
 		return await stat(path)
 //>		return stat(path)
@@ -20,12 +20,12 @@ async function tryStat(path: string): Promise<"nonExisting" | fs.Stats> {
 
 		if (error.code === "ENOENT") return "nonExisting"
 
-		throw error
+		return "error"
 	}
 }
 
-async function tryLinkStat(path: string): Promise<"nonExisting" | fs.Stats> {
-//>function tryLinkStat(path: string): "nonExisting" | fs.Stats {
+async function tryLinkStat(path: string): Promise<"error" | "nonExisting" | fs.Stats> {
+//>function tryLinkStat(path: string): "error" | "nonExisting" | fs.Stats {
 	try {
 		return await lstat(path)
 //>		return lstat(path)
@@ -34,7 +34,7 @@ async function tryLinkStat(path: string): Promise<"nonExisting" | fs.Stats> {
 
 		if (error.code === "ENOENT") return "nonExisting"
 
-		throw error
+		return "error"
 	}
 }
 
@@ -83,12 +83,14 @@ export async function __implementation(
 //>	const lstat = tryLinkStat(pathToCheck)
 
 	if (lstat === "nonExisting") return r("nonExisting")
+	if (lstat === "error") return r("error")
 
 	if (lstat.isSymbolicLink()) {
 		const stat = await tryStat(pathToCheck)
 //>		const stat = tryStat(pathToCheck)
 
 		if (stat === "nonExisting") return r("link:broken")
+		if (stat === "error") return r("link:error")
 		if (stat.isDirectory()) return r("link:dir")
 
 		return r("link:file")
