@@ -10,12 +10,12 @@ import fs from "node:fs"
 import {stat, lstat} from "@anio-software/pkg-private.node-consistent-fs/async"
 //>import {stat, lstat} from "@anio-software/pkg-private.node-consistent-fs/sync"
 
-async function tryStat(path : string) : Promise<false | fs.Stats> {
-//>function tryStat(path : string) : false | fs.Stats {
+async function tryStat(path: string): Promise<false | fs.Stats> {
+//>function tryStat(path: string): false | fs.Stats {
 	try {
 		return await stat(path)
 //>		return stat(path)
-	} catch (e : unknown) {
+	} catch (e: unknown) {
 		const error = e as NodeJS.ErrnoException
 
 		if (error.code === "ENOENT") return false
@@ -24,12 +24,12 @@ async function tryStat(path : string) : Promise<false | fs.Stats> {
 	}
 }
 
-async function tryLinkStat(path : string) : Promise<false | fs.Stats> {
-//>function tryLinkStat(path : string) : false | fs.Stats {
+async function tryLinkStat(path: string): Promise<false | fs.Stats> {
+//>function tryLinkStat(path: string): false | fs.Stats {
 	try {
 		return await lstat(path)
 //>		return lstat(path)
-	} catch (e : unknown) {
+	} catch (e: unknown) {
 		const error = e as NodeJS.ErrnoException
 
 		if (error.code === "ENOENT") return false
@@ -61,16 +61,16 @@ async function tryLinkStat(path : string) : Promise<false | fs.Stats> {
  */
 export async function __implementation(
 //>export function __implementationSync(
-	contextOptions : EnkoreJSRuntimeContextOptions,
+	contextOptions: EnkoreJSRuntimeContextOptions,
 	/* add additional parameters here */
-	paths : string[] | string
-) : Promise<PathType> {
-//>) : PathType {
+	paths: string[] | string
+): Promise<PathType> {
+//>): PathType {
 	const context = createContext(contextOptions, 0)
 
 	const path_to_check = Array.isArray(paths) ? path.join(...paths) : paths
 
-	const r = (type : PathType) : PathType => {
+	const r = (type: PathType): PathType => {
 		context.log.trace(`type of path "${path_to_check}" is "${type}".`)
 
 		return type
