@@ -1,4 +1,5 @@
 {
+  "private": true,
   "type": "module",
   "name": "@anio-software/pkg.node-fs-path-type",
   "version": "0.0.0",
