@@ -68,10 +68,10 @@ export async function __implementation(
 //>): PathType {
 	const context = createContext(contextOptions, 0)
 
-	const path_to_check = Array.isArray(paths) ? path.join(...paths) : paths
+	const pathToCheck = Array.isArray(paths) ? path.join(...paths) : paths
 
 	const r = (type: PathType): PathType => {
-		context.log.trace(`type of path "${path_to_check}" is "${type}".`)
+		context.log.trace(`type of path "${pathToCheck}" is "${type}".`)
 
 		return type
 	}
@@ -79,14 +79,14 @@ export async function __implementation(
 	//
 	// try lstat first in case path is a symbolic link
 	//
-	const lstat = await tryLinkStat(path_to_check)
-//>	const lstat = tryLinkStat(path_to_check)
+	const lstat = await tryLinkStat(pathToCheck)
+//>	const lstat = tryLinkStat(pathToCheck)
 
 	if (lstat === false) return r("nonExisting")
 
 	if (lstat.isSymbolicLink()) {
-		const stat = await tryStat(path_to_check)
-//>		const stat = tryStat(path_to_check)
+		const stat = await tryStat(pathToCheck)
+//>		const stat = tryStat(pathToCheck)
 
 		if (stat === false) return r("link:broken")
 		if (stat.isDirectory()) return r("link:dir")
