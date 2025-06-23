@@ -1,5 +1,5 @@
 import {useContext, type RuntimeWrappedContextInstance} from "@fourtune/realm-js/runtime"
-import type {PathType} from "#~src/export/PathType.d.mts"
+import type {PathType} from "#~export/PathType.ts"
 
 import path from "node:path"
 import fs from "node:fs"
