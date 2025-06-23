@@ -1,6 +1,6 @@
 {
-  "name": "@aniojs/node-fs-path-type",
-  "version": "1.0.6",
+  "name": "@anio-software/pkg.node-fs-path-type",
+  "version": "0.0.0",
   "author": "Anio Software <info@anio.software>",
   "description": "Determine the type of a path.",
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aniojs-org/node-fs-path-type.git"
+    "url": "git+https://github.com/anio-software/pkg.node-fs-path-type.git"
   },
   "type": "module",
   "devDependencies": {
