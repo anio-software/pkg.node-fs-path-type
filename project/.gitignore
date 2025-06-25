@@ -2,3 +2,7 @@
 # DO NOT ADD ENTRIES HERE, THEY WILL BE REMOVED
 /src/getTypeOfPath.ts
 /src/getTypeOfPathSync.ts
+/export/getTypeOfPathFactory.ts
+/export/getTypeOfPath.ts
+/export/getTypeOfPathSyncFactory.ts
+/export/getTypeOfPathSync.ts

@@ -9,6 +9,18 @@
         },
         "project/src/getTypeOfPathSync.ts": {
             "hash": "aad31f339d0ff4e09b8c5fbab1ff45f976240c0c44901141e7f82f9673a69b9a"
+        },
+        "project/export/getTypeOfPathFactory.ts": {
+            "hash": "01b37cb486fce526db8eaee5310442ac89b9081d05e57fbbaad492bff876cda7"
+        },
+        "project/export/getTypeOfPath.ts": {
+            "hash": "03090923e53aca7e3e5bb40139749a6b959430b58b9a736b908935d87d7ae431"
+        },
+        "project/export/getTypeOfPathSyncFactory.ts": {
+            "hash": "f5d3d7b761e08347b8f737974a81856107781dff1c4ba00d95f844c5dff155f5"
+        },
+        "project/export/getTypeOfPathSync.ts": {
+            "hash": "cc726e350503c46d13ee491a65499d9c2bdacffa88e8c9dfd1b28ee3f9f294b8"
         }
     },
     "toolchain": [
