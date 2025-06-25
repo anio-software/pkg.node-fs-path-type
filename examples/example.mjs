@@ -1,5 +1,5 @@
 import fs from "node:fs"
-import {getTypeOfPath, getTypeOfPathSync} from "../dist/default/index.mjs"
+import {getTypeOfPath, getTypeOfPathSync} from "../products/project/dist/default/index.mjs"
 
 const entries = fs.readdirSync("examples/files")
 
