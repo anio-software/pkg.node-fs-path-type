@@ -103,9 +103,9 @@ export async function __implementation(
 	if (lstat.isDirectory()) return r("dir:regular")
 
 	if (lstat.isFIFO()) return r("file:fifo")
-	if (lstat.isSocket()) return r("file:socket")
 	if (lstat.isBlockDevice()) return r("file:block")
 	if (lstat.isCharacterDevice()) return r("file:character")
+	if (lstat.isSocket()) return r("file:socket")
 
 	return r("file:regular")
 }
