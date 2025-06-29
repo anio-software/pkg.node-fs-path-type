@@ -104,8 +104,8 @@ export async function __implementation(
 
 	if (lstat.isFIFO()) return r("file:fifo")
 	if (lstat.isSocket()) return r("file:socket")
-	if (lstat.isBlockDevice()) return "file:block"
-	if (lstat.isCharacterDevice()) return "file:character"
+	if (lstat.isBlockDevice()) return r("file:block")
+	if (lstat.isCharacterDevice()) return r("file:character")
 
 	return r("file:regular")
 }
