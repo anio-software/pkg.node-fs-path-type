@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "name": "@anio-software/pkg.node-fs-path-type",
-  "version": "0.0.13",
+  "version": "0.0.20",
   "description": "Determine the type of a path.",
   "author": "Anio Software <info@anio.software>",
   "repository": {
