@@ -1,5 +1,6 @@
 import {
 	type EnkoreJSRuntimeContextOptions,
+	type EnkoreJSRuntimeContext as Context,
 	createContext
 } from "@anio-software/enkore.js-runtime"
 
@@ -10,8 +11,8 @@ import fs from "node:fs"
 import {stat, lstat} from "@anio-software/pkg-private.node-consistent-fs/async"
 //>import {stat, lstat} from "@anio-software/pkg-private.node-consistent-fs/sync"
 
-async function tryStat(path: string): Promise<"error" | "nonExisting" | fs.Stats> {
-//>function tryStat(path: string): "error" | "nonExisting" | fs.Stats {
+async function tryStat(ctx: Context, path: string): Promise<"error" | "nonExisting" | fs.Stats> {
+//>function tryStat(ctx: Context, path: string): "error" | "nonExisting" | fs.Stats {
 	try {
 		return await stat(path)
 //>		return stat(path)
@@ -20,12 +21,14 @@ async function tryStat(path: string): Promise<"error" | "nonExisting" | fs.Stats
 
 		if (error.code === "ENOENT") return "nonExisting"
 
+		ctx.logException(e)
+
 		return "error"
 	}
 }
 
-async function tryLinkStat(path: string): Promise<"error" | "nonExisting" | fs.Stats> {
-//>function tryLinkStat(path: string): "error" | "nonExisting" | fs.Stats {
+async function tryLinkStat(ctx: Context, path: string): Promise<"error" | "nonExisting" | fs.Stats> {
+//>function tryLinkStat(ctx: Context, path: string): "error" | "nonExisting" | fs.Stats {
 	try {
 		return await lstat(path)
 //>		return lstat(path)
@@ -33,6 +36,8 @@ async function tryLinkStat(path: string): Promise<"error" | "nonExisting" | fs.S
 		const error = e as NodeJS.ErrnoException
 
 		if (error.code === "ENOENT") return "nonExisting"
+
+		ctx.logException(e)
 
 		return "error"
 	}
@@ -83,15 +88,15 @@ export async function __implementation(
 	//
 	// try lstat first in case path is a symbolic link
 	//
-	const lstat = await tryLinkStat(pathToCheck)
-//>	const lstat = tryLinkStat(pathToCheck)
+	const lstat = await tryLinkStat(context, pathToCheck)
+//>	const lstat = tryLinkStat(context, pathToCheck)
 
 	if (lstat === "nonExisting") return r("nonExisting")
 	if (lstat === "error") return r("error")
 
 	if (lstat.isSymbolicLink()) {
-		const stat = await tryStat(pathToCheck)
-//>		const stat = tryStat(pathToCheck)
+		const stat = await tryStat(context, pathToCheck)
+//>		const stat = tryStat(context, pathToCheck)
 
 		if (stat === "nonExisting") return r("link:broken")
 		if (stat === "error") return r("link:error")
