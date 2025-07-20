@@ -22,8 +22,6 @@ async function tryStat(ctx: Context, path: string): Promise<"nonExisting" | fs.S
 			return "nonExisting"
 		}
 
-		ctx.logException(e)
-
 		throw e
 	}
 }
@@ -37,8 +35,6 @@ async function tryLinkStat(ctx: Context, path: string): Promise<"nonExisting" | 
 		if (isNodeJSErrnoException(e) && e.code === "ENOENT") {
 			return "nonExisting"
 		}
-
-		ctx.logException(e)
 
 		throw e
 	}
