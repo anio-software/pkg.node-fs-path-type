@@ -3,6 +3,7 @@ import type {
 	EnkoreJSRuntimeContextOptions,
 	EnkoreJSRuntimeContext as Context
 } from "@anio-software/enkore.js-runtime"
+import {isNodeJSErrnoException} from "@anio-software/enkore.js-runtime/is"
 
 import type {PathType} from "#~export/PathType.ts"
 
@@ -17,9 +18,9 @@ async function tryStat(ctx: Context, path: string): Promise<"error" | "nonExisti
 		return await stat(path)
 //>		return stat(path)
 	} catch (e: unknown) {
-		const error = e as NodeJS.ErrnoException
-
-		if (error.code === "ENOENT") return "nonExisting"
+		if (isNodeJSErrnoException(e) && e.code === "ENOENT") {
+			return "nonExisting"
+		}
 
 		ctx.logException(e)
 
@@ -33,9 +34,9 @@ async function tryLinkStat(ctx: Context, path: string): Promise<"error" | "nonEx
 		return await lstat(path)
 //>		return lstat(path)
 	} catch (e: unknown) {
-		const error = e as NodeJS.ErrnoException
-
-		if (error.code === "ENOENT") return "nonExisting"
+		if (isNodeJSErrnoException(e) && e.code === "ENOENT") {
+			return "nonExisting"
+		}
 
 		ctx.logException(e)
 
