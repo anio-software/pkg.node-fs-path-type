@@ -1,7 +1,7 @@
-import {
-	type EnkoreJSRuntimeFunctionThis,
-	type EnkoreJSRuntimeContextOptions,
-	type EnkoreJSRuntimeContext as Context
+import type {
+	EnkoreJSRuntimeFunctionThis,
+	EnkoreJSRuntimeContextOptions,
+	EnkoreJSRuntimeContext as Context
 } from "@anio-software/enkore.js-runtime"
 
 import type {PathType} from "#~export/PathType.ts"
