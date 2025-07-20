@@ -1,7 +1,6 @@
 import type {PathType} from "./PathType.ts"
 
 const translationMap = {
-	"error"          : "Error",
 	"nonExisting"    : "Not Found",
 	"file:regular"   : "Regular File",
 	"file:fifo"      : "FIFO File",
@@ -11,8 +10,7 @@ const translationMap = {
 	"dir:regular"    : "Regular Directory",
 	"link:file"      : "Symbolic link to a file",
 	"link:dir"       : "Symbolic link to a directory",
-	"link:broken"    : "Symbolic link broken",
-	"link:error"     : "Symbolic link error"
+	"link:broken"    : "Symbolic link broken"
 } as const
 
 type TranslationMap = typeof translationMap

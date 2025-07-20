@@ -1,5 +1,4 @@
 export type PathType = 
-	"error"          |
 	"nonExisting"    |
 	"file:regular"   |
 	"file:fifo"      |
@@ -9,5 +8,4 @@ export type PathType =
 	"dir:regular"    |
 	"link:file"      |
 	"link:dir"       |
-	"link:broken"    |
-	"link:error"
+	"link:broken"
