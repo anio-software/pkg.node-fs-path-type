@@ -1,7 +1,7 @@
 import {
+	type EnkoreJSRuntimeFunctionThis,
 	type EnkoreJSRuntimeContextOptions,
-	type EnkoreJSRuntimeContext as Context,
-	createContext
+	type EnkoreJSRuntimeContext as Context
 } from "@anio-software/enkore.js-runtime"
 
 import type {PathType} from "#~export/PathType.ts"
@@ -70,12 +70,13 @@ async function tryLinkStat(ctx: Context, path: string): Promise<"error" | "nonEx
  */
 export async function __implementation(
 //>export function __implementationSync(
+	this: EnkoreJSRuntimeFunctionThis,
 	contextOptions: EnkoreJSRuntimeContextOptions,
 	/* add additional parameters here */
 	paths: string[] | string
 ): Promise<PathType> {
 //>): PathType {
-	const context = createContext(contextOptions, 0)
+	const context = this.createContext(contextOptions, 0, "__FNAME__")
 
 	const pathToCheck = Array.isArray(paths) ? path.join(...paths) : paths
 
